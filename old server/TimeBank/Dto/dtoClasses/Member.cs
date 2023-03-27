@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+// האם זה התעדכן?
 namespace Dto.dtoClasses
 {
     public class Time

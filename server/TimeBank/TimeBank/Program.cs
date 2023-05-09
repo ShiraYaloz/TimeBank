@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace TimeBank
 {
-    //זה השינוי הגדול
+    //זה השינוי הגדול מס 2
     public class Program
     {
      

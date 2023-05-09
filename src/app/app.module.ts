@@ -29,6 +29,7 @@ import { FormReportComponent } from './components/reports/reportsSub/form-report
 import { ViewGiveComponent } from './components/account/view-give/view-give.component';
 import { ActionDetielsComponent } from './components/set-action/action-detiels/action-detiels.component';
 import { NewReportComponent } from './components/reports/reportsSub/new-report/new-report.component';
+import { ApproveComponent } from './components/reports/reportsSub/approve/approve.component';
 
 //import {ModelModule} from './modules/model/model.module'
 
@@ -53,6 +54,7 @@ import { NewReportComponent } from './components/reports/reportsSub/new-report/n
     ViewGiveComponent,
     ActionDetielsComponent,
     NewReportComponent,
+    ApproveComponent,
     
     //AboutComponent,
   ],

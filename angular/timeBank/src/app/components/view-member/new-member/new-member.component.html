@@ -14,8 +14,8 @@
     <input matInput required  [(ngModel)]="newMember.name" name="name" id="name"
     #validName="ngModel">
     <div class="err" *ngIf="validName.errors && (validName.dirty||validName.touched)">
-    <div *ngIf="validName.errors?.required"><label>שדה זה חובה</label><br></div>
-  </div>
+      <div *ngIf="validName.errors?.['required']"><label>שדה זה חובה</label><br></div>
+    </div>
   </mat-form-field>
   <br>
   <!-- הכנס מספר טלפון  -->
@@ -24,11 +24,11 @@
     <input matInput required  [(ngModel)]="newMember.phone" name="phone" id="phone"
     #validPhone="ngModel" minlength="9" maxlength="10" pattern="^0\d{8}|^05\d{8}$">
     <div class="err" *ngIf="validPhone.errors && (validPhone.dirty||validPhone.touched)">
-    <div *ngIf="validPhone.errors?.required"><label>שדה זה חובה</label><br></div>
-    <label *ngIf="validPhone.errors?.minlength">סיסמה מינימום 9 ספרות</label><br>
-    <label *ngIf="validPhone.errors?.maxlength">סיסמה מקסימום 10 ספרות</label>      
-    <label *ngIf="validPhone.errors?.pattern">מספר לא תקין</label>      
-  </div>
+      <div *ngIf="validPhone.errors?.['required']"><label>שדה זה חובה</label><br></div>
+      <label *ngIf="validPhone.errors?.['minlength']"]>סיסמה מינימום 9 ספרות</label><br>
+      <label *ngIf="validPhone.errors?.['maxlength']">סיסמה מקסימום 10 ספרות</label>      
+      <label *ngIf="validPhone.errors?.['pattern']">מספר לא תקין</label>      
+    </div>
   </mat-form-field>
   <br>
   <!--  -->
@@ -42,7 +42,7 @@
     <input matInput [(ngModel)]="newMember.mail" name="mail" id="mail"
     #validGmail="ngModel"   pattern="^[a-zA-Z0-9._%+-]+@[^\s@]+\.[^\s@]{2,}$">
     <div class="err" *ngIf="validGmail.errors && (validGmail.dirty||validGmail.touched)">
-      <label *ngIf="validGmail.errors?.pattern">מייל לא תקין</label>      
+      <label *ngIf="validGmail.errors?.['pattern']">מייל לא תקין</label>      
     </div>
   </mat-form-field>
   <br>
@@ -56,10 +56,10 @@
     <input matInput type="password"  [(ngModel)]="newMember.password" name="password" id="password" required
     minlength="8" maxlength="20" #validPassword="ngModel"  >
     <div class="err" *ngIf="validPassword.errors && (validPassword.dirty||validPassword.touched)">
-     <div *ngIf="validPassword.errors?.required"><label>שדה זה חובה</label><br></div>
-     <label *ngIf="validPassword.errors?.minlength">סיסמה מינימום 8 תוים</label><br>
-     <label *ngIf="validPassword.errors?.maxlength">סיסמה מקסימום 20 תוים</label>      
- </div>
+      <div *ngIf="validPassword.errors?.['required']"><label>שדה זה חובה</label><br></div>
+      <label *ngIf="validPassword.errors?.['minlength']">סיסמה מינימום 8 תוים</label><br>
+      <label *ngIf="validPassword.errors?.['maxlength']">סיסמה מקסימום 20 תוים</label>      
+  </div>
   </mat-form-field>
   <br>
   <mat-form-field appearance="fill" >

@@ -12,8 +12,8 @@ public amountPeopleOffered:number , -->
         <input matInput type="text"  [(ngModel)]="category.name" name="name" id="name" required
         #validName="ngModel">
         <div class="err" *ngIf="validName.errors && (validName.dirty||validName.touched)">
-        <div *ngIf="validName.errors?.required"><label>שדה זה חובה</label><br></div>
-      </div>
+          <div *ngIf="validName.errors?.['required']"><label>שדה זה חובה</label><br></div>
+        </div>
       </mat-form-field>
       <br>
       <!-- <mat-form-field appearance="fill" >    

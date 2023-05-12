@@ -6,6 +6,6 @@ export class ReportsAndDetails {
     constructor(public date:Date,
     public time:Time,
     public note:string,
-    public receiver:Receiver,
+    public  receivers:Array<Receiver>,
     public recieverApproved:boolean){}
 }

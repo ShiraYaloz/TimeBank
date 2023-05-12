@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import { Category } from 'src/app/classes/category';
 import { Receiver } from 'src/app/classes/receiver';
 import { ReportsAndDetails } from 'src/app/classes/reports-and-details';
@@ -11,11 +12,12 @@ import { ReportConnectService } from 'src/app/services/report-connect.service';
   styleUrls: ['./new-report.component.css']
 })
 export class NewReportComponent implements OnInit {
-  len:number=0;
-  //מקבל הפעולה
-  receiver:Receiver=new Receiver("","")
+  /** הערה חשובה--------חלק זה מיועד רק להוספת דיווח ולא לשינוי ה */
+  //בשביל שינוי נעשה קומפוננטה חדשה לעדכון בגלל הקוד הארוך והמייגע
+  countReciveTS:number=0;
+  isEnterMember:boolean=false;
   //דיווח
-  report:ReportsAndDetails=new ReportsAndDetails(new Date(),{hours: 0,minutes:0} ,"",new Receiver("",""),false);
+  report:ReportsAndDetails=new ReportsAndDetails(new Date(),{hours: 0,minutes:0} ,"",[],false);
   //רשימת הקטגוריות של החבר ימופה כדי שלא יהיה סתם את הדיווחים עבור החבר בשביל רק  בחירת שמות הקטגוריות שלו
   listCategory:Array<Category>=[];
   //הקטגוריה שנבחרה נקבל משהמשתמש שם
@@ -27,9 +29,9 @@ export class NewReportComponent implements OnInit {
     console.log(this.listCategory.toString());
     
   }
+
 //פונקציית השמירה
   onSave(){
-    this.report.receiver.phone=this.receiver.phone;
     //מציאת הקטגוריה שנבחרה ושלחיתה לסרויס שיוסיף לקטגוריה זו את הדיווח
     // this.category=this.user.currentMember.categories
     // .filter(c=>c.category.name==this.categoryName)
@@ -48,7 +50,23 @@ export class NewReportComponent implements OnInit {
   //     );
   // }
 
- 
-   }
+    }
+   updateReceivers() {
+    this.isEnterMember=true;
+   
+    const currentCount = this.report.receivers.length;
 
+    if (this.countReciveTS > currentCount) {
+      const diff = this.countReciveTS  - currentCount;
+      
+    for (let i = 0; i < this.countReciveTS; i++) {
+      this.report.receivers.push({ phone: '', name: '' });
+      console.log("hi");
+      
+    }
+    } else {
+      this.report.receivers = this.report.receivers.slice(0, this.countReciveTS );
+    }
+  }
+  
 }

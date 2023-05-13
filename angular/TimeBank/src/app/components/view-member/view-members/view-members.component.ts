@@ -23,10 +23,14 @@ constructor(private con:MemberConnectService) { }
   loadData()
   {
    this.con.getAllMembers().subscribe(
+    // אם חזרו החברים מהשרת 
    (myData)=>
    { 
+    // הכנסה למשתנה של חברי הבנק
     this.members = myData;
+    //פה כותבים קוד שרוצים שיתבצע אחרי שהנתונים חזרו
     },
+    // אם יש שגיאה
     (myErr)=>
     {  alert(myErr.message);}
    );

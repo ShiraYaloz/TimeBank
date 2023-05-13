@@ -34,13 +34,10 @@ namespace Dal.functions
         {
             try
             {
-                db.Members.Include(m => m.MemberCategories).ToList();
+  /*              db.Members.Include(m => m.MemberCategories).ToList();
                 db.Reports.Include(m => m.ReportsDetails).ToList();
                 db.MemberCategories.Include(m => m.Reports).ToList();
-                db.MemberCategories.Include(m => m.Category).ToList();
-
-
-
+                db.MemberCategories.Include(m => m.Category).ToList();*/
                 
                 db.Members.Add(newm);
                 newm.MemberCategories = null;
@@ -62,15 +59,7 @@ namespace Dal.functions
         {
             try
             {
-                db.Members.Include(m => m.MemberCategories).ToList();
-                db.Reports.Include(m => m.ReportsDetails).ToList();
-                db.MemberCategories.Include(m => m.Reports).ToList();
-                db.MemberCategories.Include(m => m.Category).ToList();
-
-
                 db.Members.FirstOrDefault(m => m.Phone == phone).ToCheck = false;
-
-                // Models.TimeBankContext.Beleges.Add(kopieren_SQL).
                 db.SaveChanges();
                 return;
             }
@@ -97,12 +86,12 @@ namespace Dal.functions
             {
                 throw new Exception();
             }
-            // db.Members.
         }
         public static Models.Member getMemberByPhoneAndPass(string phone, string pass)
         {
             try
             {
+                // שם בחבר את כל המאפיינים כלומר מחזיר חבר עם קטגוריות דיווחים וכו
                 db.Members.Include(m => m.MemberCategories).ToList();
                 db.Reports.Include(m => m.ReportsDetails).ToList();
                 db.MemberCategories.Include(m => m.Reports).ToList();
@@ -112,6 +101,19 @@ namespace Dal.functions
             catch
             {
                 throw new Exception();
+            }
+        }
+        public static void swichActive(string phone, bool nextStatus)
+        {
+            try
+            {
+                db.Members.FirstOrDefault(m => m.Phone == phone).Active = nextStatus;
+                db.SaveChanges();
+                return;
+            }
+            catch
+            {
+                return;
             }
         }
     }

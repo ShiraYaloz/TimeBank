@@ -43,7 +43,7 @@ namespace TimeBank.Controllers
             { return BadRequest(0); }
 
         }
-        //getMemberByPhone
+        //getMemberByPhone -  מחזיר את החבר בעל הטלפון הנל
         [HttpGet("getMemberByPhone/{phone}")]
         public ActionResult<Dto.dtoClasses.member> getMemberByPhone(string phone)  
         {
@@ -55,6 +55,12 @@ namespace TimeBank.Controllers
         {
             Dto.dtoClasses.member v = Bll.functions.memberFunctions.getMemberByPhoneAndPass(phone,pass);
             return Ok(v);
+        }
+        [HttpPut("swichActive/{phone}/{nextStatus}")]
+        public void swichActive(string phone , bool nextStatus)
+        {
+            /*הולך והופך את מצב החבר*/
+            Bll.functions.memberFunctions.swichActive(phone, nextStatus);
         }
     }
 }

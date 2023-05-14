@@ -1,3 +1,4 @@
+
 <br>
 <button  mat-raised-button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" id="btnbtn" class="demo">התחבר</button>
 <div id="id01" class="modal"> 
@@ -6,9 +7,16 @@
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 <!-- //////////////////////////////////////////////////// -->
 <!-- הכנס שם -->
- <form #myForm="ngForm" (ngSubmit)="onSave()"> 
-   <mat-form-field appearance="fill">    
-        <mat-label>הכנס פל</mat-label>
+
+ <form #myForm="ngForm" (ngSubmit)="onSave()">
+  <a routerLink="/myAccount">Sign up</a>
+  <a routerLink="/newAcount">--Sign in</a>
+  <body class="login"><app-new-member [btnContent]="btnCont" [isToCheck]="check"></app-new-member></body>
+ 
+  <!-- <article class="home"></article> -->
+<br>
+   <mat-form-field appearance="fill"> 
+        <mat-label>הכנס פלפון</mat-label>
         <input matInput required  [(ngModel)]="phone" name="phone" id="phone"
          #validPhone="ngModel" minlength="9" maxlength="10"  pattern="^0\d{8}|^05\d{8}$" title="אנא הזן מספר סלולרי תקין"  > 
          <div class="err" *ngIf="validPhone.errors && (validPhone.dirty||validPhone.touched)">
@@ -47,3 +55,6 @@ window.onclick = function(event) {
   }
 }
 </script>
+
+
+<!-- chana -->

@@ -1,4 +1,6 @@
 /****** Object:  Table [dbo].[Categories]    Script Date: 14/03/2023 20:19:16 ******/
+create database TimeBank
+use TimeBank
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

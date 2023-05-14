@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+//  import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -8,11 +8,11 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
   declarations: [],
   imports: [
     CommonModule,
-    NgbModal
+    // NgbModal
   ],
   exports:[
     CommonModule,
-    NgbModal,
+    // NgbModal,
   
   ],
 })

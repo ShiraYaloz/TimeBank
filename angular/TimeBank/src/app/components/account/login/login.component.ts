@@ -13,12 +13,24 @@ export class LoginComponent implements OnInit {
   constructor(private con:MemberConnectService, private curUser:CurrentUserService) { }
   newMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true);
 
+   //chana
+   btnCont:string ="Sign in";
+   check:boolean=true;
+   //
   phone:string="";
 
   password:string="";
   ngOnInit(): void {
   }
-
+    
+    // onSubmit() {
+    //   const isLoggedIn = this.curUser.currentMember(this.phone, this.password);
+    //   if (isLoggedIn) {
+    //     localStorage.setItem('isLoggedIn', 'true');
+    //     localStorage.setItem('email', this.phone);
+    //   }
+    // }
+  
   onSave(){
    this.con.getMemberByPhone(this.phone).subscribe(
 
@@ -36,7 +48,7 @@ export class LoginComponent implements OnInit {
           //עדכון מי החבר העכשווי
           this.curUser.setCurrentUser(data);
           console.log(this.curUser.currentMember.name); 
-        sessionStorage.setItem("currentUser",this.phone)
+        localStorage.setItem("currentUser",this.phone)
         }
    else
    alert("סיסמא שגויה")
@@ -48,5 +60,5 @@ export class LoginComponent implements OnInit {
    }
  );
   }
-
 }
+

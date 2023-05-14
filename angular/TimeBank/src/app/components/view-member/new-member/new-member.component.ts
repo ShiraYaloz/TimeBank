@@ -29,6 +29,7 @@ export class NewMemberComponent implements OnInit {
     if(this.newMember.name=="" || this.newMember.phone=="" || this.newMember.yearBorn == 1900
     || this.newMember.password=="")
     return;
+    else{
     this.con.addMember(this.newMember).subscribe(
         
         (data) => 
@@ -36,8 +37,12 @@ export class NewMemberComponent implements OnInit {
           if(data == null)
             { alert("nooooo"); return;}
           alert("add");
-                  
-
+          // this.newMember.(data);
+          console.log(this.newMember.name); 
+        localStorage.setItem("currentUser",this.newMember.phone)  
+        //לעשות מוסתר כדי שבבדיקה לא יראו את הסיסמה
+         localStorage.setItem("currentUser",this.newMember.password)    
+  
         },
         (err) => 
         {
@@ -45,5 +50,5 @@ export class NewMemberComponent implements OnInit {
         }
       );
   }
-
+  }
 }

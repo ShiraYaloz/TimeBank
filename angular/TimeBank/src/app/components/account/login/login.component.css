@@ -127,3 +127,12 @@ body,h1,h2,p,label,mat-form-field,div{
   button{
     font-family: Heebo;
   }
+
+
+  /* chana */
+
+ app-new-member{
+  margin: auto; 
+  direction:rtl;
+  display: flex;
+}

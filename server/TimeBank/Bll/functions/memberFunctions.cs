@@ -29,5 +29,9 @@ namespace Bll.functions
         {
             return Bll.memberConvert.convertFromMicToDto( Dal.functions.memberFun.getMemberByPhoneAndPass(phone,pass)) ;
         }
+        public static void swichActive(string phone , bool nextStatus)
+        {
+            Dal.functions.memberFun.swichActive(phone, nextStatus);
+        }
     }
 }

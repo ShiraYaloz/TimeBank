@@ -52,7 +52,7 @@ export class NewReportComponent implements OnInit {
 
     }
    updateReceivers() {
-    this.isEnterMember=true;
+   /* this.isEnterMember=true;
    
     const currentCount = this.report.receivers.length;
 
@@ -66,7 +66,7 @@ export class NewReportComponent implements OnInit {
     }
     } else {
       this.report.receivers = this.report.receivers.slice(0, this.countReciveTS );
-    }
+    }*/
   }
   
 }

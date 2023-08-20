@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dto.dtoClasses;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,52 +19,57 @@ namespace Bll.converters
             //בניית החבר היחיד בינתיים שמקבל את הפעולה
             if (report.ReportsDetails.Count() != 0)
             {
-                r.GetterMember = new Dto.dtoClasses.Receiver(report.ReportsDetails.ToList()[0].GetterMember.Name, report.ReportsDetails.ToList()[0].GetterMember.Phone);
-
-                r.ReceiverApproved = report.ReportsDetails.ToList()[0].ReceiverApproved;
+               // r.GetterMembers = new Dto.dtoClasses.Receiver(report.ReportsDetails.ToList()[0].GetterMember.Name, report.ReportsDetails.ToList()[0].GetterMember.Phone);
+                List<Dto.dtoClasses.Receiver> gM = new List<Dto.dtoClasses.Receiver>();
+                for (int i = 0; i < report.ReportsDetails.ToList().Capacity; i++)
+                {
+                    gM.Add(new Dto.dtoClasses.Receiver(report.ReportsDetails.ToList()[i].GetterMember.Name, report.ReportsDetails.ToList()[0].GetterMember.Phone));
+                }
+                r.GetterMembers = gM;
+                List<bool> appr = new List<bool>();
+                ///????????
+                r.ReceiverApproved = report.ReportsDetails.ToList().FirstOrDefault(x => x.ReceiverApproved == false) == null;
             }
             r.time =new Dto.dtoClasses.Time( report.Hour.Hours,report.Hour.Minutes);
             r.Note = report.Note;
             return r;
         }
         // (ממנו למיקרוסופט (חבר
-        public static Dal.Models.Report convertFromDtoToMicro(Dto.dtoClasses.ReportsAndDetail report)
+/*        public static Dal.Models.Report convertFromDtoToMicro(Dto.dtoClasses.ReportsAndDetail report)
         {
 
             Dal.Models.Report r = new Dal.Models.Report();
             r.Date = report.Date;
             //כאן יש צורך לעשות לולאה עבור כל חברי הפעולה שקבלו.
             //ההמרה מתבצעת לרשימה כדי לגשת למקום הראשון כי יש חבר אחד
-            //עי הפל' בניית החבר היחיד בינתיים שמקבל את הפעולה     
-           
-            r.ReportsDetails.Add(new Dal.Models.ReportsDetail()
+
+            for (int i = 0; i < report.GetterMembers.Capacity; i++)
+            {
+             r.ReportsDetails.Add(new Dal.Models.ReportsDetail()
             { 
-                    GetterMemberId = Dal.functions.memberFun.getMemberByPhone(report.GetterMember.phone).Id,
+                    GetterMemberId = Dal.functions.memberFun.getMemberByPhone(report.GetterMembers[i].phone).Id,
                     ReceiverApproved = report.ReceiverApproved
-                    ,GetterMember = Dal.functions.memberFun.getMemberByPhone(report.GetterMember.phone)
+                    ,GetterMember = Dal.functions.memberFun.getMemberByPhone(report.GetterMembers[i].phone)
                    
-            });;
+            });
+            }
+           
             return r;
-        }
+        }*/
         public static Dal.Models.Report convertFromDtoToMicroWhithRouter(Dto.dtoClasses.ReportsAndDetail report, string categoryName,string phone)
         {
+            //Dal.Models.Report r = convertFromDtoToMicro(report);
+            //r.Category.CategoryId = Dal.functions.categoryFun.GetAllCategories().FirstOrDefault(c => c.Name == categoryName).Id;
             Dal.Models.Report r = new Dal.Models.Report();
             r.Date = report.Date;
-            //כאן יש צורך לעשות לולאה עבור כל חברי הפעולה שקבלו.
-            //ההמרה מתבצעת לרשימה כדי לגשת למקום הראשון כי יש חבר אחד
-            //עי הפל' בניית החבר היחיד בינתיים שמקבל את הפעולה     
-            r.ReportsDetails.Add(new Dal.Models.ReportsDetail()
-            {
-                GetterMemberId = Dal.functions.memberFun.getMemberByPhone(report.GetterMember.phone).Id,
-                ReceiverApproved = report.ReceiverApproved
-                    ,
-                GetterMember = Dal.functions.memberFun.getMemberByPhone(report.GetterMember.phone)
-
-            }); ;
-            r.Category.Category = Dal.functions.categoryFun.GetAllCategories().FirstOrDefault(c => c.Name == categoryName);
-            r.CategoryId = Dal.functions.categoryFun.GetAllCategories().FirstOrDefault(c => c.Name == categoryName).Id;
-            r.Giver = Dal.functions.memberFun.GetAllMembers().FirstOrDefault(m => m.Phone == phone);
-            r.GiverId = Dal.functions.memberFun.GetAllMembers().FirstOrDefault(m => m.Phone == phone).Id;
+            Dal.Models.Member tempMember = Dal.functions.memberFun.GetAllMembers().FirstOrDefault(m => m.Phone == phone);
+            if (tempMember != null)
+                r.GiverId = tempMember.Id;
+            Dal.Models.MemberCategory c = tempMember.MemberCategories.FirstOrDefault(x => x.Category.Name == categoryName);
+            if (c != null)
+                r.CategoryId = c.Category.Id;
+            //r.Giver = Dal.functions.memberFun.GetAllMembers().FirstOrDefault(m => m.Phone == phone);
+            
             r.Hour = new TimeSpan(report.time.hours, report.time.minutes, 0);
             r.Note = report.Note;
             return r;
@@ -77,12 +83,12 @@ namespace Bll.converters
         }
 
         // ממיר רשימה שלנו למיקרוסופט
-        public static List<Dal.Models.Report> ConvertListDtoToMic(List<Dto.dtoClasses.ReportsAndDetail> dto)
+   /*     public static List<Dal.Models.Report> ConvertListDtoToMic(List<Dto.dtoClasses.ReportsAndDetail> dto)
         {
             List<Dal.Models.Report> mic = new List<Dal.Models.Report>();
             dto.ForEach(m => mic.Add(convertFromDtoToMicro(m)));
             return mic;
-        }
+        }*/
 
         public IEnumerator GetEnumerator()
         {

@@ -6,6 +6,17 @@ public maxGroup:number ,
 public approved:boolean ,
 public amountPeopleOffered:number , -->
 
+
+<br>
+<button  mat-raised-button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" id="btnbtn" class="demo">הוסף קטגוריה</button>
+<div id="id01" class="modal"> 
+  <form class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+   
+<!-- //////////////////////////////////////////////////// -->
+
+
 <form #myForm="ngForm" (ngSubmit)="onSave()"> 
     <mat-form-field appearance="fill" >    
         <mat-label>שם קטגוריה</mat-label>
@@ -33,8 +44,19 @@ public amountPeopleOffered:number , -->
       </mat-form-field>
        -->
 
-      <button mat-raised-button type="submit" class="demo-button" [disabled]="!myForm.valid">
+      <button mat-raised-button type="submit" onclick="document.getElementById('id01').style.display='none'" class="demo-button" [disabled]="!myForm.valid">
         שלח
       </button>
 </form>  
     
+<script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+  }
+  </script>

@@ -18,7 +18,21 @@ export class MemberConnectService {
  memberController = "member/"
   constructor(private http:HttpClient , private urls:UrlsService) { }
  urlApi = this.urls.urlApi;
+ members:Array<Member> = []
+ filled:boolean = false
+loadAllMambers()
+{
+this.getAllMembers().subscribe(
+(data)=>{
+  this.members = data
+  this.filled = true;
+},
+(err)=>{
+alert(err.message);
+}
+)
 
+}
 getAllMembers():Observable<Array<Member>>
   {
     return this.http.get<Array<Member>>(this.urlApi + this.memberController+"GetAllMembers");

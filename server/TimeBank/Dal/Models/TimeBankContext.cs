@@ -29,7 +29,7 @@ namespace Dal.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server= DESKTOP-EODP1E7\\SQLEXPRESS\n;Database=TimeBank;Trusted_Connection=true");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-EODP1E7\\SQLEXPRESS;Database=TimeBank;Trusted_Connection=true");
             }
         }
 
@@ -37,7 +37,7 @@ namespace Dal.Models
         {
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.HasIndex(e => e.Name, "UQ__Categori__72E12F1BCF625381")
+                entity.HasIndex(e => e.Name, "UQ__Categori__72E12F1B04E72BD8")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -51,6 +51,7 @@ namespace Dal.Models
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("name");
 
                 entity.HasOne(d => d.FatherCategory)
@@ -61,7 +62,10 @@ namespace Dal.Models
 
             modelBuilder.Entity<Member>(entity =>
             {
-                entity.HasIndex(e => e.Phone, "UQ__Members__B43B145FD6921D5B")
+                entity.HasIndex(e => e.Phone, "UQ__Members__B43B145F3B4E878B")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.Phone, "UQ__Members__B43B145F5DA20410")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -70,6 +74,7 @@ namespace Dal.Models
 
                 entity.Property(e => e.Address)
                     .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("address");
 
                 entity.Property(e => e.Gender).HasColumnName("gender");
@@ -78,21 +83,25 @@ namespace Dal.Models
 
                 entity.Property(e => e.Mail)
                     .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("mail");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("name");
 
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("password");
 
                 entity.Property(e => e.Phone)
                     .IsRequired()
                     .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("phone");
 
                 entity.Property(e => e.RemainingHours).HasColumnName("remainingHours");
@@ -106,7 +115,10 @@ namespace Dal.Models
             {
                 entity.ToTable("MemberCategory");
 
-                entity.HasIndex(e => new { e.MemberId, e.CategoryId }, "UQ__MemberCa__EDEB600A41B01909")
+                entity.HasIndex(e => new { e.MemberId, e.CategoryId }, "UQ__MemberCa__EDEB600A9889EE38")
+                    .IsUnique();
+
+                entity.HasIndex(e => new { e.MemberId, e.CategoryId }, "UQ__MemberCa__EDEB600A9C0CACF5")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -125,12 +137,14 @@ namespace Dal.Models
 
                 entity.Property(e => e.Place)
                     .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("place");
 
                 entity.Property(e => e.PossibilityComeCustomerHome).HasColumnName("possibilityComeCustomerHome");
 
                 entity.Property(e => e.RestrictionsDescription)
                     .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("restrictionsDescription");
 
                 entity.HasOne(d => d.Category)
@@ -162,6 +176,7 @@ namespace Dal.Models
 
                 entity.Property(e => e.Note)
                     .HasMaxLength(100)
+                    .IsUnicode(false)
                     .HasColumnName("note");
 
                 entity.HasOne(d => d.Category)
@@ -179,7 +194,7 @@ namespace Dal.Models
 
             modelBuilder.Entity<ReportsDetail>(entity =>
             {
-                entity.HasIndex(e => new { e.GetterMemberId, e.ReportId }, "UQ__ReportsD__09B6221AC500D5CD")
+                entity.HasIndex(e => new { e.GetterMemberId, e.ReportId }, "UQ__ReportsD__09B6221A6A2F8BFB")
                     .IsUnique();
 
                 entity.HasIndex(e => new { e.GetterMemberId, e.ReportId }, "unique_report_and_waiting_report_details")

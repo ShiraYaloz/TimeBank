@@ -27,8 +27,16 @@ export class SetActionComponent implements OnInit {
   }
   loadData()
   {
-    
-   this.CategoriesCon.getAllValues().subscribe(
+ /* let b:Boolean = this.CategoriesCon.loadData()
+  if(b){
+    this.categories = this.CategoriesCon.categories
+    console.log("פעולת השמה")
+    console.log(this.categories)
+   
+  }
+  else
+  console.log("error") */   
+  this.CategoriesCon.getAllValues().subscribe(
    (myData)=>
    { 
    this.values = myData;

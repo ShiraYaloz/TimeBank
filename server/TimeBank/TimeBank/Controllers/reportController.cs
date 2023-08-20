@@ -37,14 +37,20 @@ namespace TimeBank.Controllers
         [HttpPost("addReport/{phone}/{categoryName}")]
         public ActionResult<Dto.dtoClasses.ReportsAndDetail> addReport(string phone, string categoryName, Dto.dtoClasses.ReportsAndDetail rep)
         {
-            if (phone.Count() == 9)
+            //תקינות קלט
+          /*  if (phone.Count() == 9)
                 phone = phone + " ";
             for (int i = categoryName.Count(); i < 30; i++)
             {
                 categoryName += " ";
-            }
-            if (rep.GetterMember.phone.Count() == 9)
-                phone = phone + " ";
+            }*/
+          /*  for (int i = 0; i < rep.GetterMembers.Capacity; i++)
+            {
+               if (rep.GetterMembers[i].phone.Count() == 9)
+                    rep.GetterMembers[i].phone = rep.GetterMembers[i].phone + " ";
+               //Bll.functions.reportFunction.
+            }*/
+           
            /* for (int i = rep.GetterMember.name.Count(); i < 40; i++)
             {
                 categoryName += " ";

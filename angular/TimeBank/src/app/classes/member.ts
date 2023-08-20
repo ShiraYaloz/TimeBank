@@ -13,7 +13,7 @@ export class Member {
                 public remainingHours:Time ,
                 public active:boolean,
                 public toCheck:boolean,
-                
+                public IsManager:boolean,
                      )
     {    }
 

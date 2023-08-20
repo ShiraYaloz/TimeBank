@@ -14,26 +14,17 @@ notCheck:boolean=false;
 constructor(private con:MemberConnectService) { }
 
   ngOnInit(): void {
+    this.members = this.con.members;
     this.start();
   }
   start(){
-   this.loadData();
+   //this.loadData();
     }
  // פונקציה שמקבלת את תוצאות הקריאה מהשרת ומפרקת למקרה של הצלחה וכישלון
   loadData()
   {
-   this.con.getAllMembers().subscribe(
-    // אם חזרו החברים מהשרת 
-   (myData)=>
-   { 
-    // הכנסה למשתנה של חברי הבנק
-    this.members = myData;
-    //פה כותבים קוד שרוצים שיתבצע אחרי שהנתונים חזרו
-    },
-    // אם יש שגיאה
-    (myErr)=>
-    {  alert(myErr.message);}
-   );
+  //while(!this.con.filled){}
+  
   }
   //-------------פונקציות שמחזירות את הערכים בצורה קריאה---------//
   // מחזיר את הזמן

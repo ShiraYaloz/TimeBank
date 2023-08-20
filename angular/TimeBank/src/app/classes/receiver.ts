@@ -1,5 +1,4 @@
 
-
 export class Receiver {
 
     constructor(public name:string,

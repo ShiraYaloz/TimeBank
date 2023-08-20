@@ -35,14 +35,17 @@ namespace Dal.functions
 
         // פונ שמקבלת משתנה קטגוריה מסוג המסד ומוסיפה אותו למסד
         public static void addCategory(Dal.Models.Category newCate )
-        {
+         {
             try
             {
                 /*       db.Members.Include(m => m.MemberCategories).ToList();
                        db.Reports.Include(m => m.ReportsDetails).ToList();
                        db.MemberCategories.Include(m => m.Reports).ToList();
                        db.MemberCategories.Include(m => m.Category).ToList();*/
-
+                newCate.MemberCategories = null;
+                newCate.MemberCategories = null;
+                newCate.WaitingLists = null;
+                newCate.FatherCategory = null;
                 newCate.FatherCategoryId = null;
                 db.Categories.Add(newCate);
                 db.SaveChanges();

@@ -11,8 +11,8 @@ import { MemberConnectService } from 'src/app/services/member-connect.service';
 export class LoginComponent implements OnInit {
 
   constructor(private con:MemberConnectService, private curUser:CurrentUserService) { }
-  newMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true);
-
+  newMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true,false);
+  
    //chana
    btnCont:string ="Sign in";
    check:boolean=true;
@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   password:string="";
   ngOnInit(): void {
+    
   }
     
     // onSubmit() {
@@ -46,9 +47,10 @@ export class LoginComponent implements OnInit {
         else
           alert("ברוכה הבאה " +data.name)
           //עדכון מי החבר העכשווי
-          this.curUser.setCurrentUser(data);
-          console.log(this.curUser.currentMember.name); 
+        this.curUser.setCurrentUser(data);
+        console.log(this.curUser.currentMember.name); 
         localStorage.setItem("currentUser",this.phone)
+        this.ngOnInit();
         }
    else
    alert("סיסמא שגויה")

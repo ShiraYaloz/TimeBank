@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 namespace Dto.dtoClasses
 {
     public class Receiver
@@ -19,7 +19,8 @@ namespace Dto.dtoClasses
         public Time time { get; set; }
         public string Note { get; set; }
         // כאן להפוך את זה אחר כך למערך
-        public Receiver GetterMember { get; set; }
+        public List<Receiver> GetterMembers { get; set; }
+        //public Receiver GetterMember { get; set; }
         public bool? ReceiverApproved { get; set; } 
     }
 }

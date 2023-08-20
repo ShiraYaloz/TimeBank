@@ -10,8 +10,7 @@ namespace Bll.functions
     {
         public static void addReport(string phone, string categoryName,Dto.dtoClasses.ReportsAndDetail rep)
         {
-            Dal.functions.reportFun.addReport(phone, categoryName, 
-                Bll.converters.reportAndDetialConvert.convertFromDtoToMicro(rep));
+            Dal.functions.reportFun.addReport(Bll.converters.reportAndDetialConvert.convertFromDtoToMicroWhithRouter(rep,categoryName,phone));
         }
     }
 }

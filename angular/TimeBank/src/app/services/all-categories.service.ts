@@ -25,4 +25,38 @@ export class AllCategoriesService {
   
     return h
   }
+  categories:Map<string,Array<MemPlusCat>> = new Map<string,Array<MemPlusCat>>();
+  values:Array<Array<MemPlusCat>>=[];
+  keys:Array<string> =[]
+  
+  loadData():boolean
+  {
+   
+   this.getAllValues().subscribe(
+    
+   (myData)=>
+   { //debugger;
+   //this.values = myData;
+   console.log(this.values);
+   this.getAllKeys().subscribe(
+    (myData)=>{
+      this.keys = myData;
+      //console.log(this.keys);
+      for(let i=0;i<this.keys.length;i++)
+      this.categories.set(this.keys[i],this.values[i]);
+      console.log("in service");
+      console.log(this.categories);
+      return true;
+    },
+   (myErr)=>
+    {  alert(myErr.message);
+      return false}
+   )  
+     },
+     (myErr)=>
+     {  alert(myErr.message);
+     return false}
+    );
+    return true 
+  }
 }

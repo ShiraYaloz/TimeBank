@@ -49,7 +49,7 @@ namespace TimeBank.Controllers
         public ActionResult<List<List<Dto.dtoClasses.catPlusMember>>> getAllValues()
         {
             Dictionary<string, List<Dto.dtoClasses.catPlusMember>> dd = Bll.functions.memberCategoryFunction.getAllCategoriesDict();
-            List<string> keys = dd.Keys.ToList();
+            //List<string> keys = dd.Keys.ToList();
             List<List<Dto.dtoClasses.catPlusMember>> values = dd.Values.ToList();
             return Ok(values);
         }

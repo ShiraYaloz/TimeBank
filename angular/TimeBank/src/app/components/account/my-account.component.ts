@@ -9,10 +9,12 @@ import { NewMemberComponent } from '../view-member/new-member/new-member.compone
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.css']
 })
+
 export class MyAccountComponent implements OnInit {
-  currentMember:any
+  currentMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true,false);
   constructor(private curMemberService:CurrentUserService,private memberCon:MemberConnectService) { 
-    this.returnCurrent();
+    //this.returnCurrent();
+    this.currentMember = curMemberService.currentMember;
   }
  
   ngOnInit(): void {
@@ -20,23 +22,33 @@ export class MyAccountComponent implements OnInit {
   getRemainTime(mem:Member){
     return(mem.remainingHours.hours + ":" + mem.remainingHours.minutes);
    }
-
-   s:string | null=sessionStorage.getItem("currentUser");
+// להצפין את הסיסמה?
+// יש אפשרות לdefine? - currentUser...
+   localUser:string | null=localStorage.getItem("currentUser");
+   localPass:string | null=localStorage.getItem("currentPass");
    phone:string="";
+   password:string="";
    returnCurrent(){
-    if(this.s!=null){
-      this.phone=this.s;
-    this.memberCon.getMemberByPhone(this.phone).subscribe(
+    if(this.localUser!=null && this.localPass != null){
+      this.phone=this.localUser;
+      this.password = this.localPass;
+    this.memberCon.checkMemberByPhoneAndPass(this.phone , this.password).subscribe(
  
    (data)  => 
     {
      if(data == null)
-     alert("חבר אינו מופיע במערכת אנא בדוק את תקינות הקלט או הגש מועמדות להיות חבר בבנק");
+     {
+      alert("חבר אינו מופיע במערכת אנא בדוק את תקינות הקלט או הגש מועמדות להיות חבר בבנק");
+      localStorage.removeItem("currentUser")
+      localStorage.removeItem("currentPass")
+     }
+     
      this.currentMember=data;
     },
     (err) => 
     {
       alert(err.message);
+
     }
   );
    }

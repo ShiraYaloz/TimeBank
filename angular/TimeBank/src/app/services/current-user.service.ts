@@ -9,7 +9,6 @@ currentMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0}
   constructor() { }
   setCurrentUser(m:Member){
   this.currentMember = m;
-  sessionStorage.setItem("currentUser",m.phone);
   }
 }
 

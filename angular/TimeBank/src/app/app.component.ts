@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   constructor(private con:MemberConnectService) { }
 
   ngOnInit(): void {
-    this.con.loadAllMambers();
+    //this.con.loadAllMambers();
   }
   title = 'angular';
 }

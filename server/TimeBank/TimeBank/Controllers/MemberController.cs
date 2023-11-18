@@ -44,17 +44,25 @@ namespace TimeBank.Controllers
 
         }
         //getMemberByPhone -  מחזיר את החבר בעל הטלפון הנל
-        [HttpGet("getMemberByPhone/{phone}")]
+        /*[HttpGet("getMemberByPhone/{phone}")]
         public ActionResult<Dto.dtoClasses.member> getMemberByPhone(string phone)  
         {
             Dto.dtoClasses.member v = Bll.functions.memberFunctions.getMemberByPhone(phone);
             return Ok(v);
         }
-        [HttpGet("getMemberByPhone/{phone}/{pass}")]
-        public ActionResult<Dto.dtoClasses.member> getMemberByPhoneAndPass(string phone,string pass)
+       */
+        [HttpGet("checkMemberByPhoneAndPass/{phone}/{pass}")]
+        public ActionResult<Dto.dtoClasses.member> checkMemberByPhoneAndPass(string phone,string pass)
         {
-            Dto.dtoClasses.member v = Bll.functions.memberFunctions.getMemberByPhoneAndPass(phone,pass);
+            Dto.dtoClasses.member v = Bll.functions.memberFunctions.checkMemberByPhoneAndPass(phone,pass);
             return Ok(v);
+        }
+        //chscks it a member is a manager by his phone and password
+        [HttpGet("isManager/{phone}/{pass}")]
+        public ActionResult<bool> isManager(string phone, string pass)
+        {
+            bool isManager = Bll.functions.memberFunctions.isManager(phone, pass);
+            return Ok(isManager);
         }
         [HttpPut("swichActive/{phone}/{nextStatus}")]
         public void swichActive(string phone , bool nextStatus)

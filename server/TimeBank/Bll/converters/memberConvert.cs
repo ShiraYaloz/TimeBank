@@ -10,6 +10,8 @@ namespace Bll
         //המרת חבר ממיקרוסופט אלינו
        public static Dto.dtoClasses.member convertFromMicToDto(Dal.Models.Member microMember)
         {
+            if (microMember == null)
+                return null;
             Dto.dtoClasses.member m = new Dto.dtoClasses.member();
             m.name = microMember.Name;
             m.password = microMember.Password;

@@ -11,7 +11,7 @@ import { MemberConnectService } from 'src/app/services/member-connect.service';
   styleUrls: ['./new-member.component.css']
 })
 export class NewMemberComponent implements OnInit {
-  newMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true,false);
+  newMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true);
   whichGender:string="";
   @Input() btnContent:string="";
   @Input() isToCheck:boolean=true;

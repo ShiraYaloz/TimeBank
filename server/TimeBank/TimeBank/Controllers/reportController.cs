@@ -18,46 +18,35 @@ namespace TimeBank.Controllers
     [ApiController]
     public class reportController : ControllerBase
     {
-        /* [HttpPost("addReport")]
-         public ActionResult<Dto.dtoClasses.ReportsAndDetail> addReport(Dto.dtoClasses.ReportsAndDetail rep, postReport p)
-         {
-             string phone = p.phone;
-             string categoryName = p.categoryName;
-             if (phone.Count() == 9)
-                 phone = phone + " ";
-             for (int i = categoryName.Count(); i < 30; i++)
-             {
-                 categoryName += " ";
-             }
-             if (rep.GetterMember.phone.Count() == 9)
-                 phone = phone + " ";
-             Bll.functions.reportFunction.addReport(phone, categoryName, rep);
-             return Ok(rep);
-         }*/
         [HttpPost("addReport/{phone}/{categoryName}")]
-        public ActionResult<Dto.dtoClasses.ReportsAndDetail> addReport(string phone, string categoryName, Dto.dtoClasses.ReportsAndDetail rep)
+        public ActionResult<bool> addReport(string phone, string categoryName, Dto.dtoClasses.ReportsAndDetail rep)
         {
-            //תקינות קלט
-          /*  if (phone.Count() == 9)
-                phone = phone + " ";
-            for (int i = categoryName.Count(); i < 30; i++)
-            {
-                categoryName += " ";
-            }*/
-          /*  for (int i = 0; i < rep.GetterMembers.Capacity; i++)
-            {
-               if (rep.GetterMembers[i].phone.Count() == 9)
-                    rep.GetterMembers[i].phone = rep.GetterMembers[i].phone + " ";
-               //Bll.functions.reportFunction.
-            }*/
-           
-           /* for (int i = rep.GetterMember.name.Count(); i < 40; i++)
-            {
-                categoryName += " ";
-            }*/
-            Bll.functions.reportFunction.addReport(phone, categoryName, rep);
-            return Ok(rep);
+            //add checking of all the details if null exc.
+
+            if (rep == null || rep.GetterMembers == null || rep.GetterMembers.Count == 0
+                || rep.time.hours == 0 && rep.time.minutes == 0)
+                return Ok(false);
+            bool isCorrectInput = Bll.functions.reportFunction.addReport(phone, categoryName, rep);
+            return Ok(isCorrectInput);
         }
+
+        [HttpPut("getterAproveReport/{phone}/{reportId}")]
+        public ActionResult<int> getterAproveReport(string phone , short reportId)
+        {
+            try
+            {
+                int sec = Bll.functions.reportFunction.getterAproveReport(phone, reportId);
+                /*פה לקרוא לפונקציות של השכבות מתחת שלוקחות את החבר שנשלח ופשוט משנות את הערך של צק לשקר*/
+                return Ok(sec);
+            }
+            catch
+            { return BadRequest(0); }
+
+        }
+
+
+
+
     }
 }
 

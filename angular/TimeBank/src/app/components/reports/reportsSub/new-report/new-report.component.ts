@@ -32,25 +32,22 @@ export class NewReportComponent implements OnInit {
 
 //פונקציית השמירה
   onSave(){
-    //מציאת הקטגוריה שנבחרה ושלחיתה לסרויס שיוסיף לקטגוריה זו את הדיווח
-    // this.category=this.user.currentMember.categories
-    // .filter(c=>c.category.name==this.categoryName)
-    // .map(c=>c.category)[0];
-  //      this.con.addReport(this.categoryName,this.user.currentMember.phone,this.report).subscribe(     
-  //       (data) => 
-  //       {
-  //         if(data == null)
-  //           { alert("nooooo"); return;}
-  //         alert("add");        
-  //       },
-  //       (err) => 
-  //       {
-  //         alert(err.message);
-  //       }
-  //     );
-  // }
+       this.con.addReport(this.user.currentMember.phone,this.categoryName,this.report).subscribe(     
+         (data) => 
+        {
+          if(data == false)
+             { alert("אנא בדוק את הקלט - העדכון נכשל"); return;}
+          else
+          alert("הדיווח הושלם בהצלחה");
+         },
+        (err) => 
+       {
+         alert(err.message);
+        }
+       );
+   }
 
-    }
+    
    updateReceivers() {
    /* this.isEnterMember=true;
    

@@ -11,7 +11,7 @@ import { MemberConnectService } from 'src/app/services/member-connect.service';
 export class LoginComponent implements OnInit {
 
   constructor(private con:MemberConnectService, private curUser:CurrentUserService) { }
-  newMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true,false);
+  newMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true);
   
    //chana
    btnCont:string ="Sign in";
@@ -33,28 +33,26 @@ export class LoginComponent implements OnInit {
     // }
   
   onSave(){
-   this.con.getMemberByPhone(this.phone).subscribe(
+   this.con.checkMemberByPhoneAndPass(this.phone , this.password).subscribe(
 
   (data)  => 
    {
     if(data == null)
-    alert("חבר זה אינו מופיע במערכת אנא בדוק את תקינות הקלט או הגש מועמדות להיות חבר בבנק");
-   let a=this.password.toString();
-   let b=data.password.replace(/\s/g, "");
-    if(a== b){
+   {
+    alert("חבר זה אינו מופיע במערכת אנא בדוק את תקינות הקלט והסיסמה או הגש מועמדות להיות חבר בבנק");
+  this.phone = "";
+  this.password = ""; 
+  }
       if(data.gender == true)
           alert("ברוך הבא " + data.name)
         else
           alert("ברוכה הבאה " +data.name)
           //עדכון מי החבר העכשווי
         this.curUser.setCurrentUser(data);
-        console.log(this.curUser.currentMember.name); 
-        localStorage.setItem("currentUser",this.phone)
+        //console.log(this.curUser.currentMember.name); 
+        localStorage.setItem("currentUser",this.phone);
+        localStorage.setItem("currentPass",this.password);
         this.ngOnInit();
-        }
-   else
-   alert("סיסמא שגויה")
-     
    },
    (err) => 
    {

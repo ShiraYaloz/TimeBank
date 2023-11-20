@@ -10,6 +10,8 @@ namespace Bll
         //המרת חבר ממיקרוסופט אלינו
        public static Dto.dtoClasses.member convertFromMicToDto(Dal.Models.Member microMember)
         {
+            if (microMember == null)
+                return null;
             Dto.dtoClasses.member m = new Dto.dtoClasses.member();
             m.name = microMember.Name;
             m.password = microMember.Password;
@@ -45,10 +47,7 @@ namespace Bll
   
             return microMember;
         }
-        /*public static Dal.Models.Member updteChildren()
-        {
-        jkgtfdrjlkhutgdrtfhkjlhgtffjlkhg
-        }*/
+
         // ממיר רשימה של מיקרוסופט אלנו
         public static List<Dto.dtoClasses.member> ConvertListFromMicToDto(List<Dal.Models.Member> microMemberList)
         {
@@ -56,7 +55,6 @@ namespace Bll
             microMemberList.ForEach(m => lm.Add(convertFromMicToDto(m)));
 
             return lm;
-            //asdf;kljuyhtgrfgh
         }
     }
 }

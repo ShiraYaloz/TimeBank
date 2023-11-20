@@ -46,6 +46,9 @@ approveMember(phone:string):Observable<number>{
 getMemberByPhone(phone:string):Observable<Member>{
   return this.http.get<Member>(this.urlApi + this.memberController+"getMemberByPhone/"+phone);
 }
+checkMemberByPhoneAndPass(phone:string,pass:string):Observable<Member>{
+  return this.http.get<Member>(this.urlApi + this.memberController+"checkMemberByPhoneAndPass/"+phone + "/"+pass);
+}
 swichActive(phone:string,to:boolean):Observable<number>{
   return this.http.put<number>(this.urlApi + this.memberController + "swichActive/"+ phone +"/"+to, [phone,to]);
 }

@@ -27,7 +27,6 @@ namespace Dal.Models
         public bool Active { get; set; }
         public bool? ToCheck { get; set; }
         public bool? IsManager { get; set; }
-
         public virtual ICollection<MemberCategory> MemberCategories { get; set; }
         public virtual ICollection<Report> Reports { get; set; }
         public virtual ICollection<ReportsDetail> ReportsDetails { get; set; }

@@ -36,7 +36,7 @@ namespace Dto.dtoClasses
         public Time remainingHours { get; set; }
         public bool active { get; set; }
         public bool? toCheck { get; set; }
-        public bool? IsManager { get; set; }
+       // public bool? IsManager { get; set; }
         public List<categoryMember> Categories
         {
             get;

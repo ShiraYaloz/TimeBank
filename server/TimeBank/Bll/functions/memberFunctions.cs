@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace Bll.functions
 {
-    public class memberFunctions
+    public static class memberFunctions
     {
+        public static bool isManager(string phone, string pass)
+        {
+           return  Dal.functions.memberFun.isManager(phone, pass);
+           
+        }
         public static Dto.dtoClasses.member getMemberByPhone(string name)
         {
             return Bll.memberConvert.convertFromMicToDto
@@ -25,9 +30,15 @@ namespace Bll.functions
         {
             Dal.functions.memberFun.approveMember(phone);
         }
-        public static Dto.dtoClasses.member getMemberByPhoneAndPass(string phone, string pass)
+        public static Dto.dtoClasses.member checkMemberByPhoneAndPass(string phone, string pass)
         {
-            return Bll.memberConvert.convertFromMicToDto( Dal.functions.memberFun.getMemberByPhoneAndPass(phone,pass)) ;
+            Dal.Models.Member tempMember = Dal.functions.memberFun.checkMemberByPhoneAndPass(phone, pass);
+            if (tempMember != null)
+            {
+            
+                return Bll.memberConvert.convertFromMicToDto(tempMember);
+            }
+            return null;
         }
         public static void swichActive(string phone , bool nextStatus)
         {

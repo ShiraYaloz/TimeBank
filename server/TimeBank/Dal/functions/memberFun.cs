@@ -79,7 +79,7 @@ namespace Dal.functions
                 db.MemberCategories.Include(m => m.Reports).ToList();
                 db.MemberCategories.Include(m => m.Category).ToList();
 
-
+                Dal.Models.Member mm = db.Members.FirstOrDefault(m => m.Phone == phone);
                 return db.Members.FirstOrDefault(m => m.Phone == phone);
             }
             catch
@@ -87,7 +87,14 @@ namespace Dal.functions
                 throw new Exception();
             }
         }
-        public static Models.Member getMemberByPhoneAndPass(string phone, string pass)
+        public static bool isManager(string phone, string pass)
+        {
+            Dal.Models.Member tempMem = db.Members.FirstOrDefault(m => m.Phone == phone);
+            if (tempMem == null || tempMem.IsManager != true)
+                return false;
+            return true;
+        }
+        public static Models.Member checkMemberByPhoneAndPass(string phone, string pass)
         {
             try
             {
@@ -96,7 +103,11 @@ namespace Dal.functions
                 db.Reports.Include(m => m.ReportsDetails).ToList();
                 db.MemberCategories.Include(m => m.Reports).ToList();
                 db.MemberCategories.Include(m => m.Category).ToList();
-                return db.Members.FirstOrDefault(m => m.Phone == phone && m.Password == pass);
+                Models.Member tempMember = db.Members.FirstOrDefault(m => m.Phone == phone && m.Password == pass);
+                if (tempMember.ToCheck == false)
+                    return tempMember;
+                return null;
+               
             }
             catch
             {

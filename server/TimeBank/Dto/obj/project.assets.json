@@ -16,11 +16,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\This_user\\Desktop\\הנדסאים\\פרויקט גמר\\server\\TimeBank\\Dto\\Dto.csproj",
+      "projectUniqueName": "D:\\TimeBank\\server\\TimeBank\\Dto\\Dto.csproj",
       "projectName": "Dto",
-      "projectPath": "C:\\Users\\This_user\\Desktop\\הנדסאים\\פרויקט גמר\\server\\TimeBank\\Dto\\Dto.csproj",
+      "projectPath": "D:\\TimeBank\\server\\TimeBank\\Dto\\Dto.csproj",
       "packagesPath": "C:\\Users\\This_user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\This_user\\Desktop\\הנדסאים\\פרויקט גמר\\server\\TimeBank\\Dto\\obj\\",
+      "outputPath": "D:\\TimeBank\\server\\TimeBank\\Dto\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

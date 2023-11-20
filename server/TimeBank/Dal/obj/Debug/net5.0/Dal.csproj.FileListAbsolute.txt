@@ -73,3 +73,18 @@ D:\מסלול\‏‏שנה ב\bank Time in git\TimeBankP\server\TimeBank\Dal\obj
 D:\מסלול\‏‏שנה ב\bank Time in git\TimeBankP\server\TimeBank\Dal\obj\Debug\net5.0\ref\Dal.dll
 D:\מסלול\‏‏שנה ב\bank Time in git\TimeBankP\server\TimeBank\Dal\obj\Debug\net5.0\Dal.pdb
 D:\מסלול\‏‏שנה ב\bank Time in git\TimeBankP\server\TimeBank\Dal\obj\Debug\net5.0\Dal.genruntimeconfig.cache
+D:\TimeBank\server\TimeBank\Dal\bin\Debug\net5.0\Dal.deps.json
+D:\TimeBank\server\TimeBank\Dal\bin\Debug\net5.0\Dal.runtimeconfig.json
+D:\TimeBank\server\TimeBank\Dal\bin\Debug\net5.0\Dal.runtimeconfig.dev.json
+D:\TimeBank\server\TimeBank\Dal\bin\Debug\net5.0\Dal.dll
+D:\TimeBank\server\TimeBank\Dal\bin\Debug\net5.0\ref\Dal.dll
+D:\TimeBank\server\TimeBank\Dal\bin\Debug\net5.0\Dal.pdb
+D:\TimeBank\server\TimeBank\Dal\obj\Debug\net5.0\Dal.csproj.AssemblyReference.cache
+D:\TimeBank\server\TimeBank\Dal\obj\Debug\net5.0\Dal.GeneratedMSBuildEditorConfig.editorconfig
+D:\TimeBank\server\TimeBank\Dal\obj\Debug\net5.0\Dal.AssemblyInfoInputs.cache
+D:\TimeBank\server\TimeBank\Dal\obj\Debug\net5.0\Dal.AssemblyInfo.cs
+D:\TimeBank\server\TimeBank\Dal\obj\Debug\net5.0\Dal.csproj.CoreCompileInputs.cache
+D:\TimeBank\server\TimeBank\Dal\obj\Debug\net5.0\Dal.dll
+D:\TimeBank\server\TimeBank\Dal\obj\Debug\net5.0\ref\Dal.dll
+D:\TimeBank\server\TimeBank\Dal\obj\Debug\net5.0\Dal.pdb
+D:\TimeBank\server\TimeBank\Dal\obj\Debug\net5.0\Dal.genruntimeconfig.cache

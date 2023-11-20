@@ -5,7 +5,7 @@ import { Member } from '../classes/member';
   providedIn: 'root'
 })
 export class CurrentUserService {
-currentMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true,false);
+currentMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true);
   constructor() { }
   setCurrentUser(m:Member){
   this.currentMember = m;

@@ -11,7 +11,7 @@ import { MemberConnectService } from 'src/app/services/member-connect.service';
 export class LoginComponent implements OnInit {
 
   constructor(private con:MemberConnectService, private curUser:CurrentUserService) { }
-  newMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true,false);
+  newMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true);
   
    //chana
    btnCont:string ="Sign in";

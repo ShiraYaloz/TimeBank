@@ -13,27 +13,43 @@ namespace Dal.functions
         // משתנה שמכיל את המסד
         static Models.TimeBankContext db = new Models.TimeBankContext();
 
-        public static int addReport(Report rep)
+        public static void addReportDetails(List<Dal.Models.ReportsDetail> reportsDetails)
         {
             try
             {
-                /* db.Members.Include(m => m.MemberCategories).ToList();
-                 db.Reports.Include(m => m.ReportsDetails).ToList();
-                 db.MemberCategories.Include(m => m.Reports).ToList();
-                 db.MemberCategories.Include(m => m.Category).ToList();*/
-                //תקח מטבלת החברים את החבר 
-                /*  db.Members.FirstOrDefault(m => m.Phone == phone).MemberCategories.
-                      FirstOrDefault(c => c.Category.Name == categoryName).Reports.
-                      Add(rep);
+                foreach (Dal.Models.ReportsDetail item in reportsDetails)
+                {
+                    item.GetterMember = null;
+                    item.Report = null;
+                    db.ReportsDetails.Add(item);
+                }
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception();
+            }
+        }
 
-                  Dal.Models.Member r= db.Members.FirstOrDefault(m => m.Phone == phone);*/
-                //int tryId = 0;
+        public static bool checkCorrectInputRec(List<string> listRec)
+        {
+            foreach (string item in listRec)
+            {
+                if(Dal.functions.memberFun.getMemberByPhone(item) == null)
+                    return false;
+            }
+            return true;
+        }
+
+        public static short addReport(Report rep)
+        {
+            try
+            {
                 rep.Giver = null;
                 rep.ReportsDetails = null;
                 rep.Category = null;
                 db.Reports.Add(rep);
                 db.SaveChanges();
-                //tryId = rep.Id;
                 return rep.Id;
             }
             catch(Exception e)
@@ -41,6 +57,55 @@ namespace Dal.functions
                 throw new Exception();
             }
     
+        }
+
+        public static void deleteReportById(short reportID)
+        {
+            db.Reports.Remove(db.Reports.FirstOrDefault(r => r.Id == reportID));
+        }
+
+        public static bool checkIsReportApproved(short reportId)
+        {
+            if (db.ReportsDetails.FirstOrDefault(r => r.ReportId == reportId && r.ReceiverApproved != true) == null)
+                return true;
+            return false;
+            
+        }
+
+        public static void updateHours(string phone, TimeSpan addHours)
+        {
+            //TODO - lock with semaphor the account (an array of semaphors)
+            //TODO lock
+            db.Members.FirstOrDefault(m => m.Phone == phone).RemainingHours += addHours;
+            db.SaveChanges();
+            //TODO unlock semaphor
+        }
+
+        public static int getNumOfGettersOfReportById(short reportId)
+        {
+            return db.ReportsDetails.Where(r => r.ReportId == reportId).ToList().Count;
+        }
+
+        public static TimeSpan getTimeOfReportById(short reportId)
+        {
+            return db.Reports.FirstOrDefault(r => r.Id == reportId).Hour;
+        }
+
+        public static bool getterAproveReport(short getterId, short reportId)
+        {
+            try
+            {
+                Dal.Models.ReportsDetail r = db.ReportsDetails.FirstOrDefault(rd => rd.GetterMemberId == getterId && rd.ReportId == reportId);
+                if (r == null)
+                    return false;
+                r.ReceiverApproved = true;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw new Exception();
+            }
         }
     }
 }

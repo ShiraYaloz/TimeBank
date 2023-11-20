@@ -18,8 +18,8 @@ getAllReport():Observable<Array<ReportsAndDetails>>
   {
     return this.http.get<Array<ReportsAndDetails>>(this.urlApi + this.reportController+"GetAllReport");
   }
-addReport(rep:ReportsAndDetails):Observable<ReportsAndDetails>{
-     return this.http.post<ReportsAndDetails>(this.urlApi + this.reportController+"addReport",rep);
+addReport(phone:string ,categoryName:string,rep:ReportsAndDetails):Observable<boolean>{
+     return this.http.post<boolean>(this.urlApi + this.reportController+"addReport"+phone+"/"+ categoryName,rep);
  }
 }
 

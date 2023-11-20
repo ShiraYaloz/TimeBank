@@ -11,10 +11,12 @@ import { NewMemberComponent } from '../view-member/new-member/new-member.compone
 })
 
 export class MyAccountComponent implements OnInit {
-  currentMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true,false);
+  currentMember:Member = new Member("","","","","",1950,true , {hours:0,minutes:0},true,true);
   constructor(private curMemberService:CurrentUserService,private memberCon:MemberConnectService) { 
     //this.returnCurrent();
     this.currentMember = curMemberService.currentMember;
+    console.log("const")
+
   }
  
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class MyAccountComponent implements OnInit {
      }
      
      this.currentMember=data;
+     this.curMemberService.currentMember = data;
     },
     (err) => 
     {

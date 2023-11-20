@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Bll.converters
 {
-    public class reportAndDetialConvert:IEnumerable
+    public class reportAndDetialConvert//:IEnumerable
     {
         public static Dto.dtoClasses.ReportsAndDetail convertFromMicToDto(Dal.Models.Report report )
         {
@@ -62,17 +62,44 @@ namespace Bll.converters
             //r.Category.CategoryId = Dal.functions.categoryFun.GetAllCategories().FirstOrDefault(c => c.Name == categoryName).Id;
             Dal.Models.Report r = new Dal.Models.Report();
             r.Date = report.Date;
-            Dal.Models.Member tempMember = Dal.functions.memberFun.GetAllMembers().FirstOrDefault(m => m.Phone == phone);
-            if (tempMember != null)
-                r.GiverId = tempMember.Id;
+            Dal.Models.Member tempMember = Dal.functions.memberFun.getMemberByPhone(phone);
+            if (tempMember == null)
+                return null;
+            r.GiverId = tempMember.Id;
             Dal.Models.MemberCategory c = tempMember.MemberCategories.FirstOrDefault(x => x.Category.Name == categoryName);
-            if (c != null)
-                r.CategoryId = c.Category.Id;
+            if (c == null)
+                return null;
+            r.CategoryId = c.Category.Id;
             //r.Giver = Dal.functions.memberFun.GetAllMembers().FirstOrDefault(m => m.Phone == phone);
             
             r.Hour = new TimeSpan(report.time.hours, report.time.minutes, 0);
             r.Note = report.Note;
             return r;
+        }
+        public static List<Dal.Models.ReportsDetail> convertReceiversListFromDtoToMicro(List<Dto.dtoClasses.Receiver> receiversList, short reportID)
+        {
+            List<Dal.Models.ReportsDetail> reportDetails = new List<Dal.Models.ReportsDetail>();
+            foreach (var item in receiversList)
+            {
+                Dal.Models.ReportsDetail repDetails = convertReceiverFromDtoToMicro(item, reportID);
+                if (repDetails != null)
+                    reportDetails.Add(repDetails);
+                else
+                    return null;
+            }
+            return reportDetails;
+        }
+        //convert receivers
+        public static Dal.Models.ReportsDetail convertReceiverFromDtoToMicro(Dto.dtoClasses.Receiver receiver, short reportID)
+        {
+            Dal.Models.ReportsDetail repDetails = new Dal.Models.ReportsDetail();
+            repDetails.ReportId = reportID;
+            Dal.Models.Member tempMember = Dal.functions.memberFun.getMemberByPhone(receiver.phone);
+            if (tempMember == null)
+                return null;
+            repDetails.GetterMemberId = tempMember.Id;
+            repDetails.ReceiverApproved = false;
+            return repDetails;
         }
         // ממיר רשימה של מיקרוסופט אלנו
         public static List<Dto.dtoClasses.ReportsAndDetail> ConvertListFromMicToDto(List<Dal.Models.Report> microMemberList)
@@ -90,9 +117,9 @@ namespace Bll.converters
             return mic;
         }*/
 
-        public IEnumerator GetEnumerator()
+     /*   public IEnumerator GetEnumerator()
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }

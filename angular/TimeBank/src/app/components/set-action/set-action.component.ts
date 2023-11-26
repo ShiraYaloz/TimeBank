@@ -19,7 +19,7 @@ export class SetActionComponent implements OnInit {
   values:Array<Array<MemPlusCat>>=[];
   keys:Array<string> =[]
   toMap:boolean = true;
-   selectedCat:MemPlusCat  = new MemPlusCat("","","",new Category("",0,false,0),"",false,"","",false,0,0);
+   selectedCat:MemPlusCat  = new MemPlusCat("","","","",new Category("",0,false,0),"",false,"","",false,0,0);
   constructor(private CategoriesCon:AllCategoriesService,private router:Router) { 
   }
   ngOnInit(): void {

@@ -85,5 +85,79 @@ namespace Dal.functions
                 throw new Exception();
             }
         }
+
+        public static Dictionary<string, List<Dal.Models.MemberCategory>> GetFilteredMemberCategories(string name, string phone, string? email, string address, bool? gender,
+            string category, string place, bool? possibilityComeCustomerHome, short? experienceYears, string restrictionsDescription, bool? forGroup, short? minGroup, short? maxGroup)
+        {
+            var query = db.MemberCategories.AsQueryable();
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(mc => mc.Member.Name == name);
+            }
+            if (!string.IsNullOrEmpty(phone))
+            {
+                query = query.Where(mc => mc.Member.Phone == phone);
+            }
+            if (!string.IsNullOrEmpty(email))
+            {
+                query = query.Where(mc => mc.Member.Mail == email);
+            }
+            if (!string.IsNullOrEmpty(address))
+            {
+                query = query.Where(mc => mc.Member.Address == address);
+            }
+
+            if (gender.HasValue)
+            {
+                query = query.Where(mc => mc.Member.Gender == gender);
+            }
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                query = query.Where(mc => mc.Category.Name == category);
+            }
+
+            if (!string.IsNullOrEmpty(place))
+            {
+                query = query.Where(mc => mc.Place == place);
+            }
+
+            if (possibilityComeCustomerHome.HasValue)
+            {
+                query = query.Where(mc => mc.PossibilityComeCustomerHome == possibilityComeCustomerHome);
+            }
+
+            if (experienceYears.HasValue)
+            {
+                query = query.Where(mc => mc.ExperienceYears == experienceYears);
+            }
+
+            if (!string.IsNullOrEmpty(restrictionsDescription))
+            {
+                query = query.Where(mc => mc.RestrictionsDescription == restrictionsDescription);
+            }
+
+            if (forGroup.HasValue)
+            {
+                query = query.Where(mc => mc.ForGroup == forGroup);
+            }
+
+            if (minGroup.HasValue)
+            {
+                query = query.Where(mc => mc.MinGruop == minGroup);
+            }
+
+            if (maxGroup.HasValue)
+            {
+                query = query.Where(mc => mc.MaxGroup == maxGroup);
+            }
+         //   db.MemberCategories.Include(mc => mc.Member).ToList();
+            Dictionary<string, List<Dal.Models.MemberCategory>> d = new Dictionary<string, List<Models.MemberCategory>>();
+            db.Categories.ToList().ForEach(n => d.Add(n.Name,
+            query.ToList().Where(k => k.Category.Name == n.Name).ToList()));
+            return d;
+
+        }
+
     }
 }

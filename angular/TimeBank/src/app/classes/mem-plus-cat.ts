@@ -5,6 +5,7 @@ export class MemPlusCat {
         public memGiverName:string,
         public memPhone:string,
         public memEmail:string,
+        public memAddress:string,
         public  category :Category,
         public  Place :string,
         public  PossibilityComeCustomerHome :boolean,

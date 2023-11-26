@@ -18,6 +18,8 @@ namespace Bll.converters
             m.memGiverName = microMemberCategory.Member.Name;
             m.memPhone = microMemberCategory.Member.Phone;
             m.memEmail = microMemberCategory.Member.Mail;
+            m.memAddress = microMemberCategory.Member.Address;
+            m.memGender = microMemberCategory.Member.Gender;
             m.Category = Bll.converters.categoryConvert.convertFromMicToDto(microMemberCategory.Category);
             m.ExperienceYears = microMemberCategory.ExperienceYears;
             m.ForGroup = microMemberCategory.ForGroup;

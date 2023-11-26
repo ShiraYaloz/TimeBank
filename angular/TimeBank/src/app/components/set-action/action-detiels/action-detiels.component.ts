@@ -11,7 +11,7 @@ import { MemberConnectService } from 'src/app/services/member-connect.service';
   styleUrls: ['./action-detiels.component.css']
 })
 export class ActionDetielsComponent implements OnInit {
-  @Input() category:MemPlusCat=new MemPlusCat("","","",new Category("",0,false,0),"",false,"","",false,0,0);
+  @Input() category:MemPlusCat=new MemPlusCat("","","","",new Category("",0,false,0),"",false,"","",false,0,0);
   show:boolean = true;
   constructor(private membersCon:MemberConnectService) { 
     // this.category

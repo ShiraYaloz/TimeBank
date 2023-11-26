@@ -53,5 +53,21 @@ namespace TimeBank.Controllers
             List<List<Dto.dtoClasses.catPlusMember>> values = dd.Values.ToList();
             return Ok(values);
         }
+        public ActionResult<List<string>> getFilterkeys(Dto.dtoClasses.catPlusMember filter)
+        {
+            Dictionary<string, List<Dto.dtoClasses.catPlusMember>> dd = Bll.functions.memberCategoryFunction.GetFilteredMemberCategories(filter);
+            List<string> keys = dd.Keys.ToList();
+            //List<List<Dto.dtoClasses.categoryMember>> values = dd.Values.ToList();
+            return Ok(keys);
+        }
+        [HttpGet("getAllValues")]
+
+        public ActionResult<List<List<Dto.dtoClasses.catPlusMember>>> getFilterValues(Dto.dtoClasses.catPlusMember filter)
+        {
+            Dictionary<string, List<Dto.dtoClasses.catPlusMember>> dd = Bll.functions.memberCategoryFunction.GetFilteredMemberCategories(filter);
+            //List<string> keys = dd.Keys.ToList();
+            List<List<Dto.dtoClasses.catPlusMember>> values = dd.Values.ToList();
+            return Ok(values);
+        }
     }
 }

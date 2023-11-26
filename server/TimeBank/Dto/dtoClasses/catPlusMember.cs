@@ -17,9 +17,12 @@ namespace Dto.dtoClasses
         public string memGiverName { get; set; }
         public string memPhone { get; set; }
         public string memEmail { get; set; }
+        public string memAddress { get; set; }
+        public bool? memGender { get; set; }
+
         //---------------- פרטי קטגורית הפעולה של הנותן-----------
         public Category Category { get; set; }
-        //0---------------המשך תיאור הקטגוריה פר חבר
+        //---------------המשך תיאור הקטגוריה פר חבר
         public string Place { get; set; }
         public bool? PossibilityComeCustomerHome { get; set; }
         public short? ExperienceYears { get; set; }

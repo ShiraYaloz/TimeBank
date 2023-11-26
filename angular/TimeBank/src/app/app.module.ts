@@ -30,6 +30,8 @@ import { ViewGiveComponent } from './components/account/view-give/view-give.comp
 import { ActionDetielsComponent } from './components/set-action/action-detiels/action-detiels.component';
 import { NewReportComponent } from './components/reports/reportsSub/new-report/new-report.component';
 import { ApproveComponent } from './components/reports/reportsSub/approve/approve.component';
+import { SearchByCategoryComponent } from './components/set-action/search/search-by-category/search-by-category.component';
+import { SearchByStringComponent } from './components/set-action/search/search-by-string/search-by-string.component';
 
 //import {ModelModule} from './modules/model/model.module'
 
@@ -55,6 +57,8 @@ import { ApproveComponent } from './components/reports/reportsSub/approve/approv
     ActionDetielsComponent,
     NewReportComponent,
     ApproveComponent,
+    SearchByCategoryComponent,
+    SearchByStringComponent,
     
     //AboutComponent,
   ],

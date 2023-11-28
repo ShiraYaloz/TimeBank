@@ -36,38 +36,22 @@ namespace TimeBank.Controllers
             { return null; }
 
         }
-        [HttpGet("getAllkeys")]
-        public ActionResult<List<string>> getAllkeys()
-        {
-            Dictionary<string, List<Dto.dtoClasses.catPlusMember>> dd = Bll.functions.memberCategoryFunction.getAllCategoriesDict();
-            List<string> keys = dd.Keys.ToList();
-            //List<List<Dto.dtoClasses.categoryMember>> values = dd.Values.ToList();
-            return Ok(keys);
-        }
-        [HttpGet("getAllValues")]
 
-        public ActionResult<List<List<Dto.dtoClasses.catPlusMember>>> getAllValues()
-        {
-            Dictionary<string, List<Dto.dtoClasses.catPlusMember>> dd = Bll.functions.memberCategoryFunction.getAllCategoriesDict();
-            //List<string> keys = dd.Keys.ToList();
-            List<List<Dto.dtoClasses.catPlusMember>> values = dd.Values.ToList();
-            return Ok(values);
-        }
-        public ActionResult<List<string>> getFilterkeys(Dto.dtoClasses.catPlusMember filter)
-        {
-            Dictionary<string, List<Dto.dtoClasses.catPlusMember>> dd = Bll.functions.memberCategoryFunction.GetFilteredMemberCategories(filter);
-            List<string> keys = dd.Keys.ToList();
-            //List<List<Dto.dtoClasses.categoryMember>> values = dd.Values.ToList();
-            return Ok(keys);
-        }
-        [HttpGet("getAllValues")]
+        [HttpGet("getAllMemberCategory")]
 
-        public ActionResult<List<List<Dto.dtoClasses.catPlusMember>>> getFilterValues(Dto.dtoClasses.catPlusMember filter)
+        public ActionResult<List<List<Dto.dtoClasses.catPlusMember>>> getAllMemberCategory()
         {
-            Dictionary<string, List<Dto.dtoClasses.catPlusMember>> dd = Bll.functions.memberCategoryFunction.GetFilteredMemberCategories(filter);
-            //List<string> keys = dd.Keys.ToList();
-            List<List<Dto.dtoClasses.catPlusMember>> values = dd.Values.ToList();
-            return Ok(values);
+             List<Dto.dtoClasses.catPlusMember> catPlusMembers = Bll.functions.memberCategoryFunction.getAllCategoriesMember();
+            return Ok(catPlusMembers);
+        }
+    
+        [HttpGet("getFilterMemberCategory")]
+
+        public ActionResult<List<List<Dto.dtoClasses.catPlusMember>>> getFilterMemberCategory(Dto.dtoClasses.catPlusMember filter)
+        {
+            List<Dto.dtoClasses.catPlusMember> catPlusMembers = Bll.functions.memberCategoryFunction.GetFilteredMemberCategories(filter);
+          
+            return Ok(catPlusMembers);
         }
     }
 }

@@ -15,25 +15,25 @@ namespace Bll.functions
                 convertFromDtoToMicroWhithRouter(mcnew, phoneOfMember,categoryName));
 
         }
-        public static Dictionary<string, List<Dto.dtoClasses.catPlusMember>> getAllCategoriesDict()
+        public static  List<Dto.dtoClasses.catPlusMember> getAllCategoriesMember()
         {
-            Dictionary<string, List<Dal.Models.MemberCategory>> dDal = Dal.functions.categoryMemberFun.getAllCategoriesDict();
-            Dictionary<string, List<Dto.dtoClasses.catPlusMember>> d = new Dictionary<string, List<Dto.dtoClasses.catPlusMember>>();
+             List<Dal.Models.MemberCategory> dDal = Dal.functions.categoryMemberFun.getAllCategoriesMember();
+             List<Dto.dtoClasses.catPlusMember> d = new List<Dto.dtoClasses.catPlusMember>();
             foreach (var item in dDal)
             {
-                d.Add(item.Key, catPlusMemberConvert.convertFromMicToDto(item.Value));
+                d.Add(catPlusMemberConvert.convertFromMicToDto(item));
             }
             return d;
         }
 
-        public static Dictionary<string, List<Dto.dtoClasses.catPlusMember>> GetFilteredMemberCategories(Dto.dtoClasses.catPlusMember filter)
+        public static List<Dto.dtoClasses.catPlusMember> GetFilteredMemberCategories(Dto.dtoClasses.catPlusMember filter)
         {
-            Dictionary<string, List<Dal.Models.MemberCategory>> dDal = Dal.functions.categoryMemberFun.GetFilteredMemberCategories( filter.memGiverName, filter.memPhone,  filter.memEmail,filter.memAddress,filter.memGender,
+          List<Dal.Models.MemberCategory> MC = Dal.functions.categoryMemberFun.GetFilteredMemberCategories( filter.memGiverName, filter.memPhone,  filter.memEmail,filter.memAddress,filter.memGender,
             filter.Category.name,filter.Place,filter.PossibilityComeCustomerHome, filter.ExperienceYears, filter.RestrictionsDescription, filter.ForGroup, filter.MinGruop, filter.MaxGroup);
-            Dictionary<string, List<Dto.dtoClasses.catPlusMember>> d = new Dictionary<string, List<Dto.dtoClasses.catPlusMember>>();
-            foreach (var item in dDal)
+             List<Dto.dtoClasses.catPlusMember> d = new List<Dto.dtoClasses.catPlusMember>();
+            foreach (var item in MC)
             {
-                d.Add(item.Key, catPlusMemberConvert.convertFromMicToDto(item.Value));
+                d.Add( catPlusMemberConvert.convertFromMicToDto(item));
             }
             return d;
         }

@@ -29,16 +29,12 @@ namespace Dal.functions
             }
         }
 
-        public static Dictionary<string, List<Dal.Models.MemberCategory>> getAllCategoriesDict()
+        public static  List<Dal.Models.MemberCategory> getAllCategoriesMember()
 
         {
             db.MemberCategories.Include(mc => mc.Member).ToList();
-            Dictionary<string, List<Dal.Models.MemberCategory>> d = new Dictionary<string, List<Models.MemberCategory>>();
-            db.Categories.ToList().ForEach(n => d.Add(n.Name,
-            db.MemberCategories.ToList().Where(k => k.Category.Name == n.Name).ToList()));
+            List<Dal.Models.MemberCategory> d = db.MemberCategories.ToList();
             return d;
-
-
         }
 
         // פונ שמקבלת משתנה קטגורית חבר מסוג המסד ומוסיפה אותו למסד
@@ -86,7 +82,7 @@ namespace Dal.functions
             }
         }
 
-        public static Dictionary<string, List<Dal.Models.MemberCategory>> GetFilteredMemberCategories(string name, string phone, string? email, string address, bool? gender,
+        public static  List<Dal.Models.MemberCategory> GetFilteredMemberCategories(string name, string phone, string? email, string address, bool? gender,
             string category, string place, bool? possibilityComeCustomerHome, short? experienceYears, string restrictionsDescription, bool? forGroup, short? minGroup, short? maxGroup)
         {
             var query = db.MemberCategories.AsQueryable();
@@ -152,9 +148,7 @@ namespace Dal.functions
                 query = query.Where(mc => mc.MaxGroup == maxGroup);
             }
          //   db.MemberCategories.Include(mc => mc.Member).ToList();
-            Dictionary<string, List<Dal.Models.MemberCategory>> d = new Dictionary<string, List<Models.MemberCategory>>();
-            db.Categories.ToList().ForEach(n => d.Add(n.Name,
-            query.ToList().Where(k => k.Category.Name == n.Name).ToList()));
+            List<Dal.Models.MemberCategory> d =  query.ToList();
             return d;
 
         }

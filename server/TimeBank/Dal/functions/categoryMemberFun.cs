@@ -33,8 +33,16 @@ namespace Dal.functions
 
         {
             db.MemberCategories.Include(mc => mc.Member).ToList();
-            List<Dal.Models.MemberCategory> d = db.MemberCategories.ToList();
-            return d;
+            db.MemberCategories.Include(mc => mc.Category).ToList();
+            //db.MemberCategories.ToList();
+/*
+            Dictionary<string, List<Dal.Models.MemberCategory>> d = new Dictionary<string, List<Models.MemberCategory>>();
+            db.Categories.ToList().ForEach(n => d.Add(n.Name,
+            db.MemberCategories.ToList().Where(k => k.Category.Name == n.Name).ToList()));
+
+*/
+            List<Dal.Models.MemberCategory> memberCategories = db.MemberCategories.ToList();
+            return memberCategories;
         }
 
         // פונ שמקבלת משתנה קטגורית חבר מסוג המסד ומוסיפה אותו למסד

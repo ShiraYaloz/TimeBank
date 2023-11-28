@@ -39,7 +39,7 @@ namespace TimeBank.Controllers
 
         [HttpGet("getAllMemberCategory")]
 
-        public ActionResult<List<List<Dto.dtoClasses.catPlusMember>>> getAllMemberCategory()
+        public ActionResult<List<Dto.dtoClasses.catPlusMember>> getAllMemberCategory()
         {
              List<Dto.dtoClasses.catPlusMember> catPlusMembers = Bll.functions.memberCategoryFunction.getAllCategoriesMember();
             return Ok(catPlusMembers);
@@ -47,10 +47,9 @@ namespace TimeBank.Controllers
     
         [HttpGet("getFilterMemberCategory")]
 
-        public ActionResult<List<List<Dto.dtoClasses.catPlusMember>>> getFilterMemberCategory(Dto.dtoClasses.catPlusMember filter)
+        public ActionResult<List<Dto.dtoClasses.catPlusMember>> getFilterMemberCategory(Dto.dtoClasses.catPlusMember filter)
         {
             List<Dto.dtoClasses.catPlusMember> catPlusMembers = Bll.functions.memberCategoryFunction.GetFilteredMemberCategories(filter);
-          
             return Ok(catPlusMembers);
         }
     }

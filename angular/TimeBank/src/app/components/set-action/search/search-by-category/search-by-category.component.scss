@@ -1,0 +1,191 @@
+.filter-container {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .filter-container h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .filter-container .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .filter-container .form-group label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .filter-container .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .filter-container .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .filter-container .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .filter-container .form-group input[type="checkbox"] {
+    margin-top: 5px;
+  }
+  
+  .filter-container .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .filter-container .btn:hover {
+    background-color: #45a049;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* CSS for the form container */
+.filter-container {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  float: right;
+  margin-right: 10px;
+}
+
+/* CSS for the form title */
+.filter-container h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* CSS for form groups */
+.filter-container .form-group {
+  margin-bottom: 15px;
+}
+
+/* CSS for form labels */
+.filter-container .form-group label {
+  display: block;
+  font-weight: bold;
+}
+
+/* CSS for form controls */
+.filter-container .form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* CSS for focused form controls */
+.filter-container .form-control:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* CSS for form select controls */
+.filter-container .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/* CSS for form checkboxes */
+.filter-container .form-group input[type="checkbox"] {
+  margin-top: 5px;
+}
+
+/* CSS for the search icon */
+.filter-container .search-icon {
+  position: relative;
+  left: -25px;
+  top: 5px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+/* CSS for the plot point */
+.filter-container .plot-point {
+  width: 100%;
+  height: 4px;
+  background-color: #ccc;
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+/* CSS for the selected range */
+.filter-container .selected-range {
+  position: relative;
+  height: 4px;
+  background-color: #4CAF50;
+  border-radius: 2px;
+}
+
+/* CSS for the form buttons */
+.filter-container .btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.filter-container .btn:hover {
+  background-color: #45a049;
+}

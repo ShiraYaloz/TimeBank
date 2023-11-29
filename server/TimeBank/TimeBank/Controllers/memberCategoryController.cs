@@ -45,7 +45,8 @@ namespace TimeBank.Controllers
             return Ok(catPlusMembers);
         }
     
-        [HttpGet("getFilterMemberCategory")]
+       // [HttpGet("getFilterMemberCategory")]
+        [HttpPost("getFilterMemberCategory")]
 
         public ActionResult<List<Dto.dtoClasses.catPlusMember>> getFilterMemberCategory(Dto.dtoClasses.catPlusMember filter)
         {

@@ -51,5 +51,12 @@ export class SetActionComponent implements OnInit {
     this.isChack=!this.isChack;
     this.selectedCat = cat;
   }
+
+
+  onFilteredData(filteredData: MemPlusCat[]) {
+    // Handle the filtered data here
+    console.log(filteredData);
+  }
+  
 }
 

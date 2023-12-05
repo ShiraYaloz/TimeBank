@@ -16,15 +16,21 @@ import { SearchCategoryMemeberService } from 'src/app/services/search-category-m
 
 
 export class SearchByCategoryComponent implements OnInit {
-  filterOptions: MemPlusCat =new MemPlusCat('', '', '', '', new Category("",0,false,0), '', false, '', '', false, 0, 0);;
+  filterOptions: MemPlusCat =new MemPlusCat('', '', '', '', false,new Category("",0,false,0), '', false, 0, '', false, 0, 0);;
   @Output() filteredData: EventEmitter<MemPlusCat[]> = new EventEmitter<MemPlusCat[]>();
+  isFilterOpen = false;
 
   constructor(private CategoriesCon:SearchCategoryMemeberService,private router:Router) {
   }
   ngOnInit(): void {
+    // this.isFilterOpen=true;
   }
+  
 
-
+  
+  toggleFilter() {
+    this.isFilterOpen = !this.isFilterOpen;
+  }
   loadData()
   {
   
@@ -46,11 +52,23 @@ export class SearchByCategoryComponent implements OnInit {
    
   }
 
+  isFilterContainerOpen = false;
+
+
+  toggleFilterContainer() {
+    this.isFilterContainerOpen = !this.isFilterContainerOpen;
+  }
+
+  resetFilters() {
+    this.filterOptions.memGiverName = '';
+    // Reset other filter options as needed
+  }
 
   applyFilter() {
     // Apply the filter with the selected options
     console.log(this.filterOptions);
     this.loadData();
    
+    
     }
  }

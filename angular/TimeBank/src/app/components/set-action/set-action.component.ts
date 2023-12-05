@@ -16,7 +16,7 @@ export class SetActionComponent implements OnInit {
   isChack:boolean=false;
   categories:Array<MemPlusCat> = new Array<MemPlusCat>();
 
-   selectedCat:MemPlusCat  = new MemPlusCat("","","","",new Category("",0,false,0),"",false,"","",false,0,0);
+   selectedCat:MemPlusCat  = new MemPlusCat("","","","",false ,new Category("",0,false,0),"",false,0,"",false,0,0);
   constructor(private CategoriesCon:AllCategoriesService,private router:Router) { 
   }
   ngOnInit(): void {
@@ -55,7 +55,18 @@ export class SetActionComponent implements OnInit {
 
   onFilteredData(filteredData: MemPlusCat[]) {
     // Handle the filtered data here
+    console.log("the categoris data before insert categories");
+    console.log(this.categories);
+
+    this.categories=filteredData;
+    
+    console.log("the filster data after we get the categories"+filteredData);
     console.log(filteredData);
+
+    console.log("the categoris data after we get the categorie"+this.categories);
+    console.log(this.categories);
+
+
   }
   
 }

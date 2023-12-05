@@ -18,6 +18,10 @@ export class SearchCategoryMemeberService {
     return this.http.post<Array<MemPlusCat>>(this.urlApi + this.categoryController+"getFilterMemberCategory",memPlusCat);
   }
   */
+  
+  // getFilterMemberCategory(memPlusCat: MemPlusCat): Observable<Array<MemPlusCat>> {
+  //   return this.http.post<Array<MemPlusCat>>(this.urlApi + this.categoryController + "getFilterMemberCategory", memPlusCat);
+  // }
   getFilterMemberCategory(memPlusCat: MemPlusCat): Observable<Array<MemPlusCat>> {
     return this.http.post<Array<MemPlusCat>>(this.urlApi + this.categoryController + "getFilterMemberCategory", memPlusCat);
   }

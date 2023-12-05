@@ -6,10 +6,12 @@ export class MemPlusCat {
         public memPhone:string,
         public memEmail:string,
         public memAddress:string,
+        public memGender:boolean ,
+
         public  category :Category,
         public  Place :string,
         public  PossibilityComeCustomerHome :boolean,
-        public  ExperienceYears:string,
+        public  ExperienceYears:number,
         public  RestrictionsDescription :string,
         public  forGroup:boolean,
         public  minGroup:number,
